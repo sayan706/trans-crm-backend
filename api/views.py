@@ -24,7 +24,7 @@ class Register(APIView):
                 token = Token.objects.create(user=user)
 
                 return Response({
-                    "message": f"User {serializer.data['username']} is created", 
+                    "message": f"User {serializer.data['username']} is created",
                     "token": token.key
                 }, status=status.HTTP_201_CREATED)
             else:
@@ -110,7 +110,7 @@ Please keep in mind that this email is auto-generated. We kindly ask that you re
 
 Warm regards,
 Transmogrify Team
- """           
+ """       
             from_email = settings.EMAIL_HOST_USER
             send_mail(subject , message , from_email , [customer_email])
             return Response(serializer.data)
@@ -132,6 +132,7 @@ Transmogrify Team
 class RoleViewset(viewsets.ModelViewSet):
     queryset= Role.objects.all()
     serializer_class = RoleSerializer
+
 
 class EmployeeViewset(viewsets.ModelViewSet):
     queryset= Employee.objects.all()
